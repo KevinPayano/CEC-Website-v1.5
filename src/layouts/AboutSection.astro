@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets";
+import AboutImage from "../assets/Workers-2.png";
 ---
 
 <!-- About Section Begins -->
@@ -7,7 +8,7 @@
     <div class="py-8 px-4 mx-auto max-w-screen-xl">
         <div class="grid gap-8 items-center lg:gap-12 lg:grid-cols-12">
             <div class="hidden col-span-6 lg:flex">
-                <img alt="Two concrete workers working" src="img/Workers-2.png" alt="illustration">
+                <Image src={AboutImage} alt="Two concrete workers working"></Image>
             </div>
             <div class="col-span-6 space-y-4 sm:mb-6 lg:text-left lg:mb-0">
                 <h1 class="mb-4 text-3xl font-Bebas tracking-tight leading-none text-gray-900 underline underline-offset-8 decoration-orange-500 md:text-4xl">What We Do</h1>

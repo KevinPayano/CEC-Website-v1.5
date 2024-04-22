@@ -1,12 +1,20 @@
 ---
+//Images
+import { Image } from "astro:assets";
 
+import Slide1 from "../assets/Image-5.jpg";
+import Slide2 from "../assets/Image-2.jpg";
+import Slide3 from "../assets/Image-22.jpg";
+import Slide4 from "../assets/Image-26.jpg";
+import Slide5 from "../assets/Image-20.jpg";
+import Slide6 from "../assets/Image-27.jpeg";
 ---
 
 <!-- Testimonials Section Starts -->
 <section id="default-carousel" class="my-20 relative w-full" data-carousel="slide">
         
     <!-- Header -->
-    <div id="testimonialsSection" data-aos="fade-up" data-aos-duration="500" data-aos-once="true" class="px-4 text-center mb-4 mx-auto max-w-screen-sm">
+    <div id="testimonialsSection" class="px-4 text-center mb-4 mx-auto max-w-screen-sm">
         <h2 class="mb-6 text-3xl tracking-tight font-Bebas text-gray-900 underline underline-offset-8 decoration-orange-500 md:text-4xl">What Home Owners Think</h2>
     </div> 
     
@@ -15,7 +23,7 @@
 
          <!-- Item 1 -->
         <article class="bg-gradient-to-t from-black w-full h-screen hidden duration-700 ease-in-out" data-carousel-item>
-            <img alt="Outdoor patio with brick firepit and lounge chairs in a backyard" src="img/Image-5.jpg" class="object-center object-cover mix-blend-multiply inset-0 absolute h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <Image src={Slide1} alt="Outdoor patio with brick firepit and lounge chairs in a backyard" class="object-center object-cover mix-blend-multiply inset-0 absolute h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></Image>
             <div class="relative w-full h-full max-w-screen-xl mx-auto">
                 <figure class="absolute h-full grid content-end pb-8 max-w-screen-md mx-auto sm:px-4"> 
                     <blockquote class="px-4 flex items-end">
@@ -39,7 +47,7 @@
 
         <!-- Item 2 -->
         <article class="bg-gradient-to-t from-black w-full h-screen hidden duration-700 ease-in-out" data-carousel-item>
-            <img alt="Stamped concrete patio with stonewall" src="img/Image-2.jpg" class="object-center object-cover mix-blend-multiply inset-0 absolute h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <Image src={Slide2} alt="Stamped concrete patio with stonewall" class="object-center object-cover mix-blend-multiply inset-0 absolute h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></Image>
             <div class="relative w-full h-full max-w-screen-xl mx-auto">
                 <figure class="absolute h-full grid content-end pb-8 max-w-screen-md mx-auto sm:px-4"> 
                     <blockquote class="px-4 flex items-end">
@@ -64,7 +72,7 @@
 
         <!-- Item 3 -->
         <article class="absolute bg-gradient-to-t from-black w-full h-screen hidden duration-700 ease-in-out" data-carousel-item>
-            <img alt="Outdoor fireplace with stamped concrete patio and furniture" src="img/Image-22.jpg" class="object-center object-cover mix-blend-multiply inset-0 absolute h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <Image src={Slide3} alt="Outdoor fireplace with stamped concrete patio and furniture" class="object-center object-cover mix-blend-multiply inset-0 absolute h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></Image>
             <div class="relative w-full h-full max-w-screen-xl mx-auto">
                 <figure class="absolute h-full grid content-end pb-8 max-w-screen-md mx-auto sm:px-4"> 
                     <blockquote class="px-4 flex items-end">
@@ -89,7 +97,7 @@
 
         <!-- Item 4 -->
         <article class="absolute bg-gradient-to-t from-black w-full h-screen hidden duration-700 ease-in-out" data-carousel-item>
-            <img alt="Outdoor concrete footing foundation next to a house" src="img/Image-26.jpg" class="object-bottom object-cover mix-blend-multiply inset-0 absolute bg-cover h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <Image src={Slide4} alt="Outdoor concrete footing foundation next to a house" class="object-center object-cover mix-blend-multiply inset-0 absolute h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></Image>
             <div class="relative w-full h-full max-w-screen-xl mx-auto">
                 <figure class="absolute h-full grid content-end pb-8 max-w-screen-md mx-auto sm:px-4"> 
                     <blockquote class="px-4 flex items-end">
@@ -114,7 +122,7 @@
         
         <!-- Item 5 -->
         <article class="absolute bg-gradient-to-t from-black w-full h-screen hidden duration-700 ease-in-out" data-carousel-item>
-            <img alt="Concrete sidewalk beside a house" src="img/Image-20.jpg" class="object-center object-cover mix-blend-multiply inset-0 absolute bg-cover h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <Image src={Slide5} alt="Concrete sidewalk beside a house" class="object-center object-cover mix-blend-multiply inset-0 absolute h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></Image>
             <div class="relative w-full h-full max-w-screen-xl mx-auto">
                 <figure class="absolute h-full grid content-end pb-8 max-w-screen-md mx-auto sm:px-4"> 
                     <blockquote class="px-4 flex items-end">
@@ -139,7 +147,7 @@
 
         <!-- Item 6 -->
         <article class="absolute bg-gradient-to-t from-black w-full h-screen hidden duration-700 ease-in-out" data-carousel-item>
-            <img alt="Outdoor concrete patio in the backyard of a house" src="img/Image-27.jpeg" class="object-center object-cover mix-blend-multiply inset-0 absolute bg-cover h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <Image src={Slide6} alt="Outdoor concrete patio in the backyard of a house" class="object-center object-cover mix-blend-multiply inset-0 absolute h-full w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></Image>
             <div class="relative w-full h-full max-w-screen-xl mx-auto">
                 <figure class="absolute h-full grid content-end pb-8 max-w-screen-md mx-auto sm:px-4"> 
                     <blockquote class="px-4 flex items-end">

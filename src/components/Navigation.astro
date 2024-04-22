@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets";
+import LogoImage from "../assets/CEC Logo.png";
 ---
 
 <!-- Navigation Section Begins -->
@@ -7,7 +8,8 @@
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-4">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="index.html" class="flex items-center">
-                <span class="text-gray-800 self-center text-xl font-semibold whitespace-nowrap font-Barlow sm:text-2xl">CONCRETE EXPERTS COMPANY</span>
+                <!-- <span class="text-gray-800 self-center text-xl font-semibold whitespace-nowrap font-Barlow sm:text-2xl">CONCRETE EXPERTS COMPANY</span> -->
+                <Image src={LogoImage} alt="" class="w-56 md:w-64"></Image>
             </a>
             <div class="flex items-center lg:order-2 font-Inter">
                 <a href="tel:3366663247" class="hidden py-2 mr-6 text-gray-800 border-b border-gray-100 font-medium md:block lg:hover:bg-transparent lg:px-5 lg:py-2.5 lg:border-0 lg:p-0">(336) 666-3247</a>
