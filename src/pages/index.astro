@@ -1,4 +1,8 @@
 ---
+//Images
+import { Image } from "astro:assets";
+import AboutImage from "../assets/Workers-2.png";
+
 //Components
 import Navigation from "../components/Navigation.astro";
 
@@ -18,9 +22,31 @@ import Footer from "../components/Footer.astro";
 
 <MainLayout>
 	<Navigation></Navigation>
-	<HeroSecion></HeroSecion>
+	<HeroSecion>
+		<h1 class="pt-3 text-6xl tracking-tight leading-tight text-white font-display">Reliable</h1>
+        <h1 class="pt-3 text-6xl tracking-tight leading-tight text-white font-display">Quality</h1>
+        <h1 class="pt-3 text-6xl tracking-tight leading-tight text-white font-display">Experienced</h1>
+        <p class="py-2 text-gray-100 font-medium md:text-lg">This is how our clients describe our concrete solutions!</p>
+        <p class="py-2 text-gray-100 font-medium md:text-lg">Our concrete solutions have earned the trust of satisfied customers with 10 years of experience. We deliver quality results and exceptional customer service to bring your vision to life. Contact us now and experience unparalleled service and top-quality results. Let's build something amazing together!</p>
+        <a href="#quoteSection" class="inline-flex items-center my-4 mx-2 py-3 px-5 text-center text-white rounded-md bg-orange-500 hover:bg-orange-600">
+            <span class="font-medium">Get A Quote</span>
+        </a>
+	</HeroSecion>
 	<StatsSection></StatsSection>
-	<AboutSection></AboutSection>
+	<AboutSection>
+		<div class="hidden col-span-6 lg:flex">
+			<Image src={AboutImage} alt="Two concrete workers working"></Image>
+		</div>
+		<div class="col-span-6 space-y-4 sm:mb-6 lg:text-left lg:mb-0">
+			<h1 class="mb-4 text-3xl font-display tracking-tight leading-none text-gray-900 underline underline-offset-8 decoration-orange-500 md:text-4xl">What We Do</h1>
+			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">At Concrete Experts Company, we're a trusted and experienced team of concrete contractors based in North Carolina. With 10+ years of expertise, we specialize in delivering top-quality results and we strive to do the job right the first time.</p>
+			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">Our customer service is our top priority, and we aim to achieve it by emphasizing communication, a positive attitude, and organization. Our ultimate objective is to convey these three traits to our clients throughout every project.</p>
+			<a href="about.html" class="inline-flex items-center py-3 px-5 font-medium text-center text-white rounded-md bg-orange-500 hover:bg-orange-600 sm:mt-1">
+				<span class="">Learn More</span>
+			</a>
+		</div>
+		 
+	</AboutSection>
 	<ProjectSection></ProjectSection>
 	<WhyUsSection></WhyUsSection>
 	<ServicesSection></ServicesSection>

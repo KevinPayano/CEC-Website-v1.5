@@ -1,3 +1,52 @@
 ---
+//Images
+import { Image } from "astro:assets";
+import AboutImage1 from "../assets/Workers-1.png";
+import AboutImage2 from "../assets/Project-1.png";
 
+//Components
+import Navigation from "../components/Navigation.astro";
+
+//Layouts
+import MainLayout from "../layouts/MainLayout.astro";
+import HeroSecion from "../layouts/HeroSecion.astro";
+import AboutSection from "../layouts/AboutSection.astro";
+import ValuesSection from "../layouts/ValuesSection.astro";
+import Footer from "../components/Footer.astro";
 ---
+
+<MainLayout>
+    <Navigation></Navigation>
+    <HeroSecion>
+        <h1 class="mb-4 text-6xl tracking-tight leading-tight text-white font-display">Experienced</h1>
+        <h1 class="mb-4 text-6xl tracking-tight leading-tight text-white font-display">Team</h1>
+        <p class="mb-6 text-gray-100 md:text-lg lg:mb-8">Looking for a company that can deliver top-notch concrete solutions? Look no further than Concrete Experts Company!</p>
+        <p class="mb-6 text-gray-100 md:text-lg lg:mb-8">With over a decade of experience in the industry, we have become a trusted name in the world of concrete. We take pride in our ability to deliver superior quality outcomes that exceed our clients' expectations.</p>
+    </HeroSecion>
+    <AboutSection>
+        <div class="col-span-6 space-y-4 sm:mb-6 lg:text-left lg:mb-0">
+			<h1 class="mb-4 text-3xl font-display tracking-tight leading-none text-gray-900 underline underline-offset-8 decoration-orange-500 md:text-4xl">About Us</h1>
+			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">At Concrete Experts Company, we strive to do the job right the first time. With more than 10 years of experience in this field, we have established ourselves as a reliable name by delivering superior quality outcomes and excellent customer support.</p>
+			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">Our objective is to assist our clients in revamping their properties by offering tailor-made concrete solutions that cater to their particular requirements and uplift the aesthetic appeal of their residential or commercial spaces.</p>
+			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">Based on our experience, we have realized that there are three essential elements required for running a prosperous business:</p>
+		</div>
+        <div class="hidden col-span-6 lg:flex">
+			<Image src={AboutImage1} alt="Two concrete workers working"></Image>
+		</div>
+    </AboutSection>
+    <ValuesSection></ValuesSection>
+    <AboutSection>
+        <div class="hidden col-span-6 lg:flex">
+			<Image src={AboutImage2} alt="Finished concrete pool deck"></Image>
+		</div>
+        <div class="col-span-6 space-y-4 sm:mb-6 lg:text-left lg:mb-0">
+			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">Our goal is to provide exceptional customer service, and we strive to communicate this to our clients by emphasizing these three key qualities.</p>
+			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">We take pride in using advanced techniques and technologies to ensure the longevity and durability of our work, and we collaborate closely with our clients throughout the design and installation process to bring their vision to reality.</p>
+			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">Transform your concrete dreams into reality with our team! Contact us now for top-quality results that will exceed your expectations. Let's get started today!</p>
+            <a href="#quoteSection" class="inline-flex items-center my-4 mx-2 py-3 px-5 text-center text-white rounded-md bg-orange-500 hover:bg-orange-600">
+                <span class="font-medium">Get A Quote</span>
+            </a>
+		</div>
+    </AboutSection>
+    <Footer></Footer>
+</MainLayout>
