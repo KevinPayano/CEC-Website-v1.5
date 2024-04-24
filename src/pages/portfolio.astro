@@ -1,3 +1,20 @@
 ---
+//Components
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import Gallery from "../components/Gallery.astro";
 
+//Layouts
+import MainLayout from "../layouts/MainLayout.astro";
+import HeroSection from "../layouts/PortfolioHero.astro";
 ---
+
+<MainLayout>
+    <Navigation></Navigation>
+    <HeroSection>
+        <h1 class="mb-4 text-6xl tracking-tight leading-tight text-white font-display">Our</h1>
+        <h1 class="mb-4 text-6xl tracking-tight leading-tight text-white font-display">Portfolio</h1>
+        <p class="mb-6 text-gray-100 md:text-lg lg:mb-8">Our portfolio page showcases our successful projects from satisfied clients. With 10+ years of experience, we specialize in various concrete services, including stamped patios and foundations for new constructions.</p>
+    </HeroSection>
+    <Footer></Footer>
+</MainLayout>
