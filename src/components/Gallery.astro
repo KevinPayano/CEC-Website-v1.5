@@ -1,295 +1,49 @@
 ---
-all_modals = ['modal-1', 'modal-2', 'modal-3', 'modal-4', 'modal-5', 'modal-6', 'modal-7', 'modal-8', 'modal-9']
-        all_modals.forEach((modal)=>{
-            const modalSelected = document.querySelector('.'+modal);
-            modalSelected.classList.remove('fadeIn');
-            modalSelected.classList.add('fadeOut');
-            modalSelected.style.display = 'none';
-        })
-        const modalClose = (modal) => {
-            const modalToClose = document.querySelector('.'+modal);
-            modalToClose.classList.remove('fadeIn');
-            modalToClose.classList.add('fadeOut');
-            setTimeout(() => {
-                modalToClose.style.display = 'none';
-            }, 500);
-        }
 
-        const openModal = (modal) => {
-            const modalToOpen = document.querySelector('.'+modal);
-            modalToOpen.classList.remove('fadeOut');
-            modalToOpen.classList.add('fadeIn');
-            modalToOpen.style.display = 'flex';
-        }
 ---
 
-<!-- Image Gallery Starts -->
-<section class="my-6 antialiased md:mx-4">
-    <div class="max-w-screen-xl px-4 py-8 mx-auto sm:py-10 md:my-10 lg:px-6 lg:py-10 lg:my-20">
+<section class="bg-blue-500 w-full h-full"></section>
 
-        <!-- Services Header -->  
-        <div class="max-w-2xl">
-            <h2 class="mb-4 text-3xl tracking-tight font-display text-gray-900 underline underline-offset-8 decoration-orange-500 md:text-4xl">Portfolio</h2>
-        </div>
-  
-        <!-- Gallery Container Starts -->
-        <div class="grid grid-cols-1 mt-12 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div x-data="{ imageGalleryOpened: false, imageGalleryActiveUrl: null, imageGalleryImageIndex: null, imageGallery: [ {'photo': '/images/Image-2.jpg','alt': 'Photo of Mountains'},{'photo': 'https://cdn.devdojo.com/images/june2023/mountains-02.jpeg','alt': 'Photo of Mountains 02'},{'photo': 'https://cdn.devdojo.com/images/june2023/mountains-03.jpeg','alt': 'Photo of Mountains 03'},{'photo': 'https://cdn.devdojo.com/images/june2023/mountains-04.jpeg','alt': 'Photo of Mountains 04'},{'photo': 'https://cdn.devdojo.com/images/june2023/mountains-05.jpeg','alt': 'Photo of Mountains 05'},{'photo': 'https://cdn.devdojo.com/images/june2023/mountains-06.jpeg','alt': 'Photo of Mountains 06'},{'photo': 'https://cdn.devdojo.com/images/june2023/mountains-07.jpeg','alt': 'Photo of Mountains 07'},{'photo': 'https://cdn.devdojo.com/images/june2023/mountains-08.jpeg','alt': 'Photo of Mountains 08'},{'photo': 'https://cdn.devdojo.com/images/june2023/mountains-09.jpeg','alt': 'Photo of Mountains 09'},{'photo': 'https://cdn.devdojo.com/images/june2023/mountains-10.jpeg','alt': 'Photo of Mountains 10'} ], imageGalleryOpen(event) { this.imageGalleryImageIndex = event.target.dataset.index; this.imageGalleryActiveUrl = event.target.src; this.imageGalleryOpened = true; }, imageGalleryClose() { this.imageGalleryOpened = false; setTimeout(() => this.imageGalleryActiveUrl = null, 300); }, imageGalleryNext(){ this.imageGalleryImageIndex = (this.imageGalleryImageIndex == this.imageGallery.length) ? 1 : (parseInt(this.imageGalleryImageIndex) + 1); this.imageGalleryActiveUrl = this.$refs.gallery.querySelector('[data-index=\'' + this.imageGalleryImageIndex + '\']').src; }, imageGalleryPrev() { this.imageGalleryImageIndex = (this.imageGalleryImageIndex == 1) ? this.imageGallery.length : (parseInt(this.imageGalleryImageIndex) - 1); this.imageGalleryActiveUrl = this.$refs.gallery.querySelector('[data-index=\'' + this.imageGalleryImageIndex + '\']').src;}}" 
+    @image-gallery-next.window="imageGalleryNext()" 
+    @image-gallery-prev.window="imageGalleryPrev()" 
+    @keyup.right.window="imageGalleryNext();" 
+    @keyup.left.window="imageGalleryPrev();"
+    class="w-full h-full select-none">
 
-            <!-- Image 1 -->
-            <div onclick="openModal('modal-1')" class="bg-[url('img/Image-1.jpeg')] bg-no-repeat bg-cover bg-center h-96 cursor-pointer rounded-md transition ease-in-out duration-300 hover:scale-105 hover:opacity-90"></div>
-
-            <!-- Image 2 -->
-            <div onclick="openModal('modal-2')" class="bg-[url('img/Image-2.jpg')] bg-no-repeat bg-cover bg-center h-96 cursor-pointer rounded-md transition ease-in-out duration-300 hover:scale-105 hover:opacity-90"></div>
-
-            <!-- Image 3 -->
-            <div onclick="openModal('modal-3')" class="bg-[url('img/Image-5.jpg')] bg-no-repeat bg-cover bg-center h-96 cursor-pointer rounded-md transition ease-in-out duration-300 hover:scale-105 hover:opacity-90"></div>
-    
-            <!-- Image 4 -->
-            <div onclick="openModal('modal-4')" class="bg-[url('img/Image-21.jpeg')] bg-no-repeat bg-cover bg-center h-96 cursor-pointer rounded-md transition ease-in-out duration-300 hover:scale-105 hover:opacity-90"></div>
-
-            <!-- Image 5 -->
-            <div onclick="openModal('modal-5')" class="bg-[url('img/Image-20.jpg')] bg-no-repeat bg-cover bg-center h-96 cursor-pointer rounded-md transition ease-in-out duration-300 hover:scale-105 hover:opacity-90"></div>
-
-            <!-- Image 6 -->
-            <div onclick="openModal('modal-6')" class="bg-[url('img/Image-8.jpeg')] bg-no-repeat bg-cover bg-center h-96 cursor-pointer rounded-md transition ease-in-out duration-300 hover:scale-105 hover:opacity-90"></div>
-    
-            <!-- Image 7 -->
-            <div onclick="openModal('modal-7')" class="bg-[url('img/Image-19.jpeg')] bg-no-repeat bg-cover bg-center h-96 cursor-pointer rounded-md transition ease-in-out duration-300 hover:scale-105 hover:opacity-90"></div>
-
-            <!-- Image 8 -->
-            <div onclick="openModal('modal-8')" class="bg-[url('img/Image-22.jpg')] bg-no-repeat bg-cover bg-center h-96 cursor-pointer rounded-md transition ease-in-out duration-300 hover:scale-105 hover:opacity-90"></div>
-
-            <!-- Image 9 -->
-            <div onclick="openModal('modal-9')" class="bg-[url('img/Image-4.jpeg')] bg-no-repeat bg-cover bg-center h-96 cursor-pointer rounded-md transition ease-in-out duration-300 hover:scale-105 hover:opacity-90"></div>
-    
-        </div>
-        <!-- Gallery Container Ends -->
-
+    <div class="max-w-6xl mx-auto duration-1000 delay-300 opacity-0 select-none ease animate-fade-in-view" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
+        <ul x-ref="gallery" id="gallery" class="grid grid-cols-2 gap-5 lg:grid-cols-5">
+            <template x-for="(image, index) in imageGallery">
+                <li><img x-on:click="imageGalleryOpen" :src="image.photo" :alt="image.alt" :data-index="index+1" class="object-cover select-none w-full h-auto bg-gray-200 rounded cursor-zoom-in aspect-[5/6] lg:aspect-[2/3] xl:aspect-[3/4]"></li>
+            </template>
+        </ul>
     </div>
-</section>
-<!-- Image Gallery Ends -->
-
-<!-- Modal 1 Starts -->
-<div class="modal-1 fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0, 0, 0, 0.8);">
-    <div class="modal-container w-11/12 mx-auto z-50 overflow-y-auto">
-
-        <!-- Close Button -->
-        <div class="pb-3 flex justify-center">
-            <div class="bg-gray-800/60 modal-close p-2 rounded-full cursor-pointer z-50 group hover:bg-gray-100" onclick="modalClose('modal-1')">
-                <svg class="fill-current text-white group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                </svg>
+    <template x-teleport="body">
+        <div 
+            x-show="imageGalleryOpened" 
+            x-transition:enter="transition ease-in-out duration-300" 
+            x-transition:enter-start="opacity-0" 
+            x-transition:leave="transition ease-in-in duration-300" 
+            x-transition:leave-end="opacity-0" 
+            @click="imageGalleryClose" 
+            @keydown.window.escape="imageGalleryClose" 
+            x-trap.inert.noscroll="imageGalleryOpened"
+            class="fixed inset-0 z-[99] flex items-center justify-center bg-black bg-opacity-50 select-none cursor-zoom-out" x-cloak>
+            <div class="relative flex items-center justify-center w-11/12 xl:w-4/5 h-11/12"> 
+                <div @click="$event.stopPropagation(); $dispatch('image-gallery-prev')" class="absolute left-0 flex items-center justify-center text-white translate-x-10 rounded-full cursor-pointer xl:-translate-x-24 2xl:-translate-x-32 bg-white/10 w-14 h-14 hover:bg-white/20">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                </div>
+                <img 
+                    x-show="imageGalleryOpened" 
+                    x-transition:enter="transition ease-in-out duration-300" 
+                    x-transition:enter-start="opacity-0 transform scale-50" 
+                    x-transition:leave="transition ease-in-in duration-300" 
+                    x-transition:leave-end="opacity-0 transform scale-50" 
+                    class="object-contain object-center w-full h-full select-none cursor-zoom-out" :src="imageGalleryActiveUrl" alt="" style="display: none;">
+                <div @click="$event.stopPropagation(); $dispatch('image-gallery-next');" class="absolute right-0 flex items-center justify-center text-white -translate-x-10 rounded-full cursor-pointer xl:translate-x-24 2xl:translate-x-32 bg-white/10 w-14 h-14 hover:bg-white/20">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </div>
             </div>
         </div>
-
-        <!-- Image -->
-        <div class="flex justify-center w-full">
-            <div class="flex md:w-7/12 lg:w-5/12 xl:w-4/12">
-                <img alt="Outdoor stamped concrete patio with stone brick fire pit" src="img/Image-1.jpeg" class="w-full h-full">
-            </div>    
-        </div>
-
-    </div>
-
+    </template>
 </div>
-<!-- Modal 1 Ends -->
-
-<!-- Modal 2 Starts -->
-<div class="modal-2 fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0, 0, 0, 0.8);">
-    <div class="modal-container w-11/12 mx-auto z-50 overflow-y-auto">
-
-        <!-- Close Button -->
-        <div class="pb-3 flex justify-center">
-            <div class="bg-gray-800/60 modal-close p-2 rounded-full cursor-pointer z-50 group hover:bg-gray-100" onclick="modalClose('modal-2')">
-                <svg class="fill-current text-white group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Image -->
-        <div class="flex justify-center w-full">
-            <div class="flex md:w-7/12 lg:w-5/12 xl:w-4/12">
-                <img alt="Stamped concrete patio with stonewall" src="img/Image-2.jpg" class="object-center w-full h-full">
-            </div>
-        </div>
-
-    </div>
-
-</div>    
-<!-- Modal 2 Ends -->
-
-<!-- Modal 3 Starts -->
-<div class="modal-3 fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0, 0, 0, 0.8);">
-    <div class="modal-container w-11/12 mx-auto z-50 overflow-y-auto">
-
-        <!-- Close Button -->
-        <div class="pb-3 flex justify-center">
-            <div class="bg-gray-800/60 modal-close p-2 rounded-full cursor-pointer z-50 group hover:bg-gray-100" onclick="modalClose('modal-3')">
-                <svg class="fill-current text-white group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Image -->
-        <div class="flex justify-center w-full">
-            <div class="flex md:w-11/12 lg:w-10/12 xl:w-7/12">
-                <img alt="Outdoor patio with brick firepit and chairs in a backyard" src="img/Image-5.jpg" class="w-full h-full">
-            </div>
-        </div>
-
-    </div>
-
-</div>    
-<!-- Modal 3 Ends -->
-
-<!-- Modal 4 Starts -->
-<div class="modal-4 fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0, 0, 0, 0.8);">
-    <div class="modal-container w-11/12 mx-auto z-50 overflow-y-auto">
-
-        <!-- Close Button -->
-        <div class="pb-3 flex justify-center">
-            <div class="bg-gray-800/60 modal-close p-2 rounded-full cursor-pointer z-50 group hover:bg-gray-100" onclick="modalClose('modal-4')">
-                <svg class="fill-current text-white group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Image -->
-        <div class="flex justify-center w-full">
-            <div class="flex lg:w-10/12 xl:w-7/12">
-                <img alt="Finished concrete pool deck" src="img/Image-21.jpeg" class="w-full h-full">
-            </div>
-        </div>
-
-    </div>
-
-</div>    
-<!-- Modal 4 Ends -->
-
-<!-- Modal 5 Starts -->
-<div class="modal-5 fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0, 0, 0, 0.8);">
-    <div class="modal-container w-11/12 mx-auto z-50 overflow-y-auto">
-
-        <!-- Close Button -->
-        <div class="pb-3 flex justify-center">
-            <div class="bg-gray-800/60 modal-close p-2 rounded-full cursor-pointer z-50 group hover:bg-gray-100" onclick="modalClose('modal-5')">
-                <svg class="fill-current text-white group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Image -->
-        <div class="flex justify-center w-full">
-            <div class="flex md:w-7/12 lg:w-5/12 xl:w-4/12">
-                <img alt="Concrete sidewalk beside a house" src="img/Image-20.jpg" class="w-full h-full">
-            </div>
-        </div>
-
-    </div>
-
-</div>    
-<!-- Modal 5 Ends -->
-
-<!-- Modal 6 Starts -->
-<div class="modal-6 fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0, 0, 0, 0.8);">
-    <div class="modal-container w-11/12 mx-auto z-50 overflow-y-auto">
-
-        <!-- Close Button -->
-        <div class="pb-3 flex justify-center">
-            <div class="bg-gray-800/60 modal-close p-2 rounded-full cursor-pointer z-50 group hover:bg-gray-100" onclick="modalClose('modal-6')">
-                <svg class="fill-current text-white group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Image -->
-        <div class="flex justify-center w-full">
-            <div class="flex md:w-10/12 lg:w-7/12 xl:w-5/12">
-                <img alt="Concrete footing foundation outside in a backyard" src="img/Image-8.jpeg" class="w-full h-full">
-            </div>
-        </div>
-
-    </div>
-
-</div>    
-<!-- Modal 6 Ends -->
-
-<!-- Modal 7 Starts -->
-<div class="modal-7 fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0, 0, 0, 0.8);">
-    <div class="modal-container w-11/12 mx-auto z-50 overflow-y-auto">
-
-        <!-- Close Button -->
-        <div class="pb-3 flex justify-center">
-            <div class="bg-gray-800/60 modal-close p-2 rounded-full cursor-pointer z-50 group hover:bg-gray-100" onclick="modalClose('modal-7')">
-                <svg class="fill-current text-white group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Image -->
-        <div class="flex justify-center w-full">
-            <div class="flex md:w-7/12 lg:w-5/12 xl:w-4/12">
-                <img alt="Outdoor stamped concrete patio with stone brick firepit surrounded by lounge chairs" src="img/Image-19.jpeg" class="w-full h-full">
-            </div>
-        </div>
-
-    </div>
-
-</div>    
-<!-- Modal 7 Ends -->
-
-<!-- Modal 8 Starts -->
-<div class="modal-8 fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0, 0, 0, 0.8);">
-    <div class="modal-container w-11/12 mx-auto z-50 overflow-y-auto">
-
-        <!-- Close Button -->
-        <div class="pb-3 flex justify-center">
-            <div class="bg-gray-800/60 modal-close p-2 rounded-full cursor-pointer z-50 group hover:bg-gray-100" onclick="modalClose('modal-8')">
-                <svg class="fill-current text-white group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Image -->
-        <div class="flex justify-center w-full">
-            <div class="flex lg:w-10/12 xl:w-7/12">
-                <img alt="Outdoor fireplace with stamped concrete patio and furniture" src="img/Image-22.jpg" class="w-full h-full">
-            </div>
-        </div>
-
-    </div>
-
-</div>    
-<!-- Modal 8 Ends -->
-
-<!-- Modal 9 Starts -->
-<div class="modal-9 fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0, 0, 0, 0.8);">
-    <div class="modal-container w-11/12 mx-auto z-50 overflow-y-auto">
-
-        <!-- Close Button -->
-        <div class="pb-3 flex justify-center">
-            <div class="bg-gray-800/60 modal-close p-2 rounded-full cursor-pointer z-50 group hover:bg-gray-100" onclick="modalClose('modal-9')">
-                <svg class="fill-current text-white group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Image -->
-        <div class="flex justify-center w-full">
-            <div class="flex 2xl:w-7/12">
-                <img alt="Outdoor concrete pooldeck with brick seating wall and firepit" src="img/Image-4.jpeg" class="w-full h-full">
-            </div>
-        </div>
-
-    </div>
-
-</div>    
-<!-- Modal 9 Ends -->
