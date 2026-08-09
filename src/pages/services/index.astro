@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { services } from '../../data/services';
+---
+
+<BaseLayout
+  title="Concrete Services in North Carolina"
+  description="Explore concrete services from Concrete Experts Company: driveways, slabs, sidewalks & curbs, footing foundations, and patios across North Carolina."
+>
+  <section class="bg-ink">
+    <div class="container-site py-16 md:py-20">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-brand">Services</p>
+      <h1 class="max-w-3xl font-display text-5xl tracking-wide text-white md:text-6xl">
+        Concrete services for residential and build projects
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-white/85">
+        Choose a service below to see what we offer, who it’s for, and how to request a quote.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-pad bg-white">
+    <div class="container-site">
+      <SectionHeading
+        title="Primary concrete services"
+        description="Focused flatwork and foundation work—done with clear communication and a clean finish."
+      />
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((service) => <ServiceCard service={service} />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

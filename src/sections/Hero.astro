@@ -1,0 +1,42 @@
+---
+import Button from '../components/Button.astro';
+import { cta } from '../data/navigation';
+import { site } from '../data/site';
+---
+
+<section class="relative isolate min-h-[min(88vh,760px)] overflow-hidden bg-ink">
+  <img
+    src="/images/hero.jpg"
+    alt="Concrete Experts Company crew completing a concrete installation in North Carolina"
+    width="1920"
+    height="1080"
+    fetchpriority="high"
+    decoding="async"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/45"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/30"></div>
+
+  <div class="container-site relative flex min-h-[min(88vh,760px)] items-center py-16 md:py-20">
+    <div class="max-w-2xl">
+      <p class="font-display text-3xl tracking-wide text-brand sm:text-4xl">
+        {site.name}
+      </p>
+      <h1 class="mt-3 font-display text-5xl leading-[0.95] tracking-wide text-white sm:text-6xl md:text-7xl">
+        Concrete driveways, slabs, foundations &amp; patios across North Carolina
+      </h1>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/90 md:text-xl">
+        With 10+ years of experience and 100+ projects completed, homeowners and general
+        contractors trust Mike and his team for clear communication and concrete work done right.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <Button href={cta.primary.href} variant="primary" size="lg">
+          {cta.primary.label}
+        </Button>
+        <Button href={site.phoneHref} variant="outline" size="lg">
+          Call {site.phoneDisplay}
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

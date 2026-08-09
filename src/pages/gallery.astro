@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { galleryItems } from '../data/gallery';
+---
+
+<BaseLayout
+  title="Project Gallery"
+  description="See concrete project work from Concrete Experts Company—driveways, slabs, foundations, sidewalks, and patios across North Carolina."
+>
+  <section class="bg-ink">
+    <div class="container-site py-16 md:py-20">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-brand">Gallery</p>
+      <h1 class="max-w-3xl font-display text-5xl tracking-wide text-white md:text-6xl">
+        Recent concrete project work
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-white/85">
+        A look at finished and in-progress concrete work from jobs across North Carolina.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-pad bg-white">
+    <div class="container-site">
+      <SectionHeading
+        title="Project photos"
+        description="Browse examples of flatwork and outdoor concrete installations."
+      />
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          galleryItems.map((item, index) => (
+            <figure class="overflow-hidden border border-ink/10 bg-surface-muted">
+              <img
+                src={item.src}
+                alt={item.alt}
+                width="800"
+                height="600"
+                loading={index < 3 ? 'eager' : 'lazy'}
+                decoding="async"
+                class="aspect-[4/3] w-full object-cover"
+              />
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Like what you see?"
+    description="Request a quote for your driveway, slab, sidewalk, foundation, or patio project."
+  />
+</BaseLayout>

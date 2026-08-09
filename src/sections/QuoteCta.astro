@@ -1,0 +1,25 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+---
+
+<section id="quote" class="section-pad bg-white">
+  <div class="container-site">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+      <div>
+        <SectionHeading
+          eyebrow="Get a quote"
+          title="Tell us about your concrete project"
+          description="Share a few details and we’ll follow up with next steps. Prefer to talk now? Call during business hours."
+        />
+        <div class="mt-8 border border-ink/10 bg-surface-muted p-6">
+          <ContactInfo />
+        </div>
+      </div>
+      <div class="border border-ink/10 bg-surface-muted p-6 md:p-8">
+        <QuoteForm id="home-quote-form" />
+      </div>
+    </div>
+  </div>
+</section>

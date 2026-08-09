@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact & Get a Quote"
+  description={`Contact Concrete Experts Company for a free concrete quote in North Carolina. Call ${site.phoneDisplay} or send project details online.`}
+>
+  <section class="bg-ink">
+    <div class="container-site py-16 md:py-20">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-brand">Contact</p>
+      <h1 class="max-w-3xl font-display text-5xl tracking-wide text-white md:text-6xl">
+        Get a quote for your concrete project
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-white/85">
+        Call during business hours or send the form below. Include service type, size, and location
+        so we can respond with a useful estimate.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-pad bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+      <div>
+        <SectionHeading
+          title="Talk with Concrete Experts"
+          description="Prefer the phone? That’s often the fastest way to start."
+        />
+        <div class="mt-8 border border-ink/10 bg-surface-muted p-6 md:p-8">
+          <ContactInfo />
+        </div>
+      </div>
+      <div class="border border-ink/10 bg-surface-muted p-6 md:p-8">
+        <h2 class="font-display text-3xl tracking-wide text-ink">Request a free quote</h2>
+        <p class="mt-2 mb-6 text-ink-muted">
+          Fields marked required help us follow up quickly.
+        </p>
+        <QuoteForm id="contact-quote-form" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  open?: boolean;
+}
+
+const { question, answer, open = false } = Astro.props;
+---
+
+<div
+  class="border-b border-ink/10"
+  x-data={`{ open: ${open} }`}
+>
+  <h3>
+    <button
+      type="button"
+      class="flex w-full items-center justify-between gap-4 py-5 text-left"
+      @click="open = !open"
+      :aria-expanded="open.toString()"
+    >
+      <span class="text-lg font-semibold text-ink md:text-xl">{question}</span>
+      <span
+        class="flex h-8 w-8 shrink-0 items-center justify-center border border-ink/15 text-ink"
+        aria-hidden="true"
+      >
+        <svg
+          class="h-4 w-4 transition-transform"
+          :class="open && 'rotate-45'"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+      </span>
+    </button>
+  </h3>
+  <div x-cloak x-show="open" x-transition>
+    <p class="pb-5 pr-10 leading-relaxed text-ink-muted">
+      {answer}
+    </p>
+  </div>
+</div>

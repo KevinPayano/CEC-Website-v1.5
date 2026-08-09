@@ -1,0 +1,20 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="border-b border-ink/10 bg-surface-muted" aria-label="Company highlights">
+  <div class="container-site py-8 md:py-10">
+    <dl class="grid gap-6 sm:grid-cols-3">
+      {
+        site.stats.map((stat) => (
+          <div class="text-center sm:text-left">
+            <dt class="font-display text-4xl tracking-wide text-brand md:text-5xl">{stat.value}</dt>
+            <dd class="mt-1 text-sm font-semibold uppercase tracking-[0.08em] text-ink md:text-[15px]">
+              {stat.label}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>

@@ -1,38 +1,99 @@
 ---
-import { Image } from "astro:assets";
-import LogoImage from "../assets/CEC Logo.png";
+import { footerNav } from '../data/navigation';
+import { services } from '../data/services';
+import { site } from '../data/site';
 ---
 
-<!-- Footer Section Starts -->
-<footer class="p-4 bg-gray-50 md:p-8 lg:p-10">
-    <div class="mx-auto max-w-screen-xl text-center">
-        <a href="/" class="m-6 flex justify-center items-center">
-            <Image src={LogoImage} alt="" class="w-56 md:w-64"></Image>
+<footer class="border-t border-white/10 bg-ink text-white">
+  <div class="container-site section-pad">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:col-span-1">
+        <a href="/" class="inline-block">
+          <img
+            src="/images/logo-footer.png"
+            alt={site.name}
+            width="220"
+            height="56"
+            class="h-12 w-auto invert"
+          />
         </a>
-        <ul class="flex flex-wrap font-Inter justify-center items-center mb-6 text-gray-900">
-            <li>
-                <a href="/about" class="mr-4 hover:underline md:mr-6 ">About Us</a>
-            </li>
-            <li>
-                <a href="/#servicesSection" class="mr-4 hover:underline md:mr-6">Services</a>
-            </li>
-            <li>
-                <a href="/#testimonialsSection" class="mr-4 hover:underline md:mr-6 ">Testimonials</a>
-            </li>
-            <li>
-                <a href="/portfolio" class="mr-4 hover:underline md:mr-6">Portfolio</a>
-            </li>
-            <li>
-                <a href="/#quoteSection" class="mr-4 hover:underline md:mr-6">Get Free Quote</a>
-            </li>
-            <li>
-                <a href="mailto:concreteexpertscoestimating@outlook.com" class="mr-4 hover:underline md:mr-6">Email Us</a>
-            </li>
-            <li>
-                <a href="tel:9196314282" class="mr-4 hover:underline md:mr-6">(919) 631-4282</a>
-            </li>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/75">
+          Concrete contractors serving homeowners and general contractors across North Carolina.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-2xl tracking-wide text-white">Explore</h2>
+        <ul class="mt-4 space-y-2">
+          {
+            footerNav.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-white/75 transition-colors hover:text-brand">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
-        <span class="text-sm text-gray-500 sm:text-center">© 2024 <a href="/" class="hover:underline">Concrete Experts Company</a>. All Rights Reserved. Site Proudly Created by <a href="https://kevinpayano.com/" target="_blank" class="hover:underline">Kevin Payano</a>.</span>
+      </div>
+
+      <div>
+        <h2 class="font-display text-2xl tracking-wide text-white">Services</h2>
+        <ul class="mt-4 space-y-2">
+          {
+            services.map((service) => (
+              <li>
+                <a
+                  href={`/services/${service.slug}`}
+                  class="text-sm text-white/75 transition-colors hover:text-brand"
+                >
+                  {service.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-display text-2xl tracking-wide text-white">Contact</h2>
+        <ul class="mt-4 space-y-3 text-sm text-white/75">
+          <li>
+            <a href={site.phoneHref} class="transition-colors hover:text-brand">
+              {site.phoneDisplay}
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${site.email}`} class="break-all transition-colors hover:text-brand">
+              {site.email}
+            </a>
+          </li>
+          <li>
+            <p>{site.hours.weekdays}</p>
+            <p class="mt-1">{site.hours.weekend}</p>
+          </li>
+          <li>{site.serviceArea}</li>
+        </ul>
+      </div>
     </div>
+
+    <div
+      class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/60 md:flex-row md:items-center md:justify-between"
+    >
+      <p>
+        © {new Date().getFullYear()} {site.name}. All rights reserved.
+      </p>
+      <p>
+        Website by{' '}
+        <a
+          href={site.creatorCredit.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white/80 underline-offset-2 hover:text-brand hover:underline"
+        >
+          {site.creatorCredit.name}
+        </a>
+      </p>
+    </div>
+  </div>
 </footer>
-<!-- Footer Section Ends -->

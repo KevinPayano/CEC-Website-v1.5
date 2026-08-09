@@ -1,0 +1,25 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Button from '../components/Button.astro';
+import { services } from '../data/services';
+---
+
+<section id="services" class="section-pad bg-white">
+  <div class="container-site">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <SectionHeading
+        eyebrow="What we pour"
+        title="Concrete services for homes and builds"
+        description="From curb appeal upgrades to structural footings, we handle the flatwork and foundation work your project needs."
+      />
+      <Button href="/services" variant="ghost" class="shrink-0 self-start md:self-auto">
+        View all services
+      </Button>
+    </div>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((service) => <ServiceCard service={service} />)}
+    </div>
+  </div>
+</section>

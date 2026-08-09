@@ -1,0 +1,29 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import FaqItem from '../components/FaqItem.astro';
+import { faqs } from '../data/faqs';
+
+interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+const items = typeof limit === 'number' ? faqs.slice(0, limit) : faqs;
+---
+
+<section id="faq" class="section-pad bg-surface-muted">
+  <div class="container-site">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <SectionHeading
+        eyebrow="FAQ"
+        title="Common questions before you request a quote"
+        description="Quick answers for homeowners and contractors planning concrete work in North Carolina."
+      />
+      <div class="border border-ink/10 bg-white px-5 md:px-7">
+        {items.map((faq, index) => (
+          <FaqItem question={faq.question} answer={faq.answer} open={index === 0} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

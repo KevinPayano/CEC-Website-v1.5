@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/thankyou"
+  to = "/thank-you"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio"
+  to = "/gallery"
+  status = 301

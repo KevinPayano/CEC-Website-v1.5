@@ -1,0 +1,54 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'dark';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+  external?: boolean;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  class: className = '',
+  type = 'button',
+  external = false,
+} = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-md font-sans font-semibold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:opacity-60';
+
+const sizes = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-5 py-3 text-base',
+  lg: 'px-6 py-3.5 text-lg',
+};
+
+const variants = {
+  primary: 'bg-brand text-white hover:bg-brand-dark',
+  secondary: 'bg-ink text-white hover:bg-surface-dark',
+  outline: 'border-2 border-white text-white hover:bg-white hover:text-ink',
+  ghost: 'border-2 border-ink text-ink hover:bg-ink hover:text-white',
+  dark: 'bg-white text-ink hover:bg-brand-light',
+};
+
+const classes = `${base} ${sizes[size]} ${variants[variant]} ${className}`;
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class={classes}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes}>
+      <slot />
+    </button>
+  )
+}

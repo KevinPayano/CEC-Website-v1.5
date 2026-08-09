@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Thank You"
+  description="Thanks for contacting Concrete Experts Company. We’ll follow up on your quote request soon."
+  noindex={true}
+>
+  <section class="section-pad bg-white">
+    <div class="container-site max-w-2xl py-10 text-center md:py-16">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-brand">Quote received</p>
+      <h1 class="font-display text-5xl tracking-wide text-ink md:text-6xl">
+        Thanks — we got your message
+      </h1>
+      <p class="mt-5 text-lg leading-relaxed text-ink-muted">
+        Someone from Concrete Experts Company will follow up about your project. If you need to
+        reach us sooner, call during business hours.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <Button href={site.phoneHref} variant="primary" size="lg">
+          Call {site.phoneDisplay}
+        </Button>
+        <Button href="/" variant="ghost" size="lg">Back to home</Button>
+      </div>
+      <p class="mt-8 text-sm text-ink-light">
+        Hours: {site.hours.weekdays}
+      </p>
+    </div>
+  </section>
+</BaseLayout>

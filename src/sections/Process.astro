@@ -1,0 +1,48 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+
+const steps = [
+  {
+    step: '01',
+    title: 'Request a quote',
+    text: 'Call or send project details—service type, size, location, and any plans or photos.',
+  },
+  {
+    step: '02',
+    title: 'Review the scope',
+    text: 'We confirm the work, discuss finish options, and provide a clear estimate.',
+  },
+  {
+    step: '03',
+    title: 'Schedule the pour',
+    text: 'Once approved, we schedule site prep and pour day around weather and inspections.',
+  },
+  {
+    step: '04',
+    title: 'Finish strong',
+    text: 'We complete the install, walk the result with you, and leave you with concrete ready for use.',
+  },
+];
+---
+
+<section id="process" class="section-pad bg-white">
+  <div class="container-site">
+    <SectionHeading
+      eyebrow="How it works"
+      title="A straightforward path from quote to pour"
+      description="No guesswork. Here’s what working with Concrete Experts typically looks like."
+    />
+
+    <ol class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {
+        steps.map((item) => (
+          <li class="relative border-t-4 border-brand bg-surface-muted p-6">
+            <span class="font-display text-4xl tracking-wide text-brand">{item.step}</span>
+            <h3 class="mt-3 font-display text-2xl tracking-wide text-ink">{item.title}</h3>
+            <p class="mt-3 text-ink-muted leading-relaxed">{item.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

@@ -1,54 +1,129 @@
 ---
-//Images
-import { Image } from "astro:assets";
-import AboutImage1 from "../assets/Workers-1.png";
-import AboutImage2 from "../assets/Project-1.png";
-
-//Components
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-
-//Layouts
-import MainLayout from "../layouts/MainLayout.astro";
-import HeroSection from "../layouts/AboutHero.astro";
-import AboutSection from "../layouts/AboutSection.astro";
-import ValuesSection from "../layouts/ValuesSection.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { site } from '../data/site';
+import { cta } from '../data/navigation';
 ---
 
-<MainLayout>
-    <title slot="title">About Us | Concrete Experts Company</title>
-    <meta slot="metaDescription" name="description" content="At Concrete Experts Company, we strive to do the job right the first time. Trust our highly experienced team of concrete contractors for your next project. Contact us today!">
-    <Navigation></Navigation>
-    <HeroSection>
-        <h1 class="mb-4 text-6xl tracking-tight leading-tight text-white font-display">Experienced</h1>
-        <h1 class="mb-4 text-6xl tracking-tight leading-tight text-white font-display">Team</h1>
-        <p class="mb-6 text-gray-100 md:text-lg lg:mb-8">Looking for a company that can deliver top-notch concrete solutions? Look no further than Concrete Experts Company!</p>
-        <p class="mb-6 text-gray-100 md:text-lg lg:mb-8">With over a decade of experience in the industry, we have become a trusted name in the world of concrete. We take pride in our ability to deliver superior quality outcomes that exceed our clients' expectations.</p>
-    </HeroSection>
-    <AboutSection>
-        <div class="col-span-6 space-y-4 sm:mb-6 lg:text-left lg:mb-0">
-			<h1 class="mb-4 text-3xl font-display tracking-tight leading-none text-gray-900 underline underline-offset-8 decoration-orange-500 md:text-4xl">About Us</h1>
-			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">At Concrete Experts Company, we strive to do the job right the first time. With more than 10 years of experience in this field, we have established ourselves as a reliable name by delivering superior quality outcomes and excellent customer support.</p>
-			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">Our objective is to assist our clients in revamping their properties by offering tailor-made concrete solutions that cater to their particular requirements and uplift the aesthetic appeal of their residential or commercial spaces.</p>
-			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">Based on our experience, we have realized that there are three essential elements required for running a prosperous business:</p>
-		</div>
-        <div class="hidden col-span-6 lg:flex">
-			<Image src={AboutImage1} alt="Two concrete workers working"></Image>
-		</div>
-    </AboutSection>
-    <ValuesSection></ValuesSection>
-    <AboutSection>
-        <div class="hidden col-span-6 lg:flex">
-			<Image src={AboutImage2} alt="Finished concrete pool deck"></Image>
-		</div>
-        <div class="col-span-6 space-y-4 sm:mb-6 lg:text-left lg:mb-0">
-			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">Our goal is to provide exceptional customer service, and we strive to communicate this to our clients by emphasizing these three key qualities.</p>
-			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">We take pride in using advanced techniques and technologies to ensure the longevity and durability of our work, and we collaborate closely with our clients throughout the design and installation process to bring their vision to reality.</p>
-			<p class="max-w-xl text-gray-500 lg:mx-0 md:text-lg xl:text-lg">Transform your concrete dreams into reality with our team! Contact us now for top-quality results that will exceed your expectations. Let's get started today!</p>
-            <a href="/#quoteSection" class="inline-flex items-center py-3 px-5 text-center text-white rounded-md bg-orange-500 hover:bg-orange-600">
-                <span class="font-medium">Get A Quote</span>
-            </a>
-		</div>
-    </AboutSection>
-    <Footer></Footer>
-</MainLayout>
+<BaseLayout
+  title="About Us"
+  description="Meet Concrete Experts Company—North Carolina concrete contractors with 10+ years of experience, 100+ projects completed, and a 4.9-star Google rating."
+>
+  <section class="relative isolate overflow-hidden bg-ink">
+    <img
+      src="/images/about.jpg"
+      alt="Concrete Experts Company workers on a job site"
+      width="1600"
+      height="900"
+      class="absolute inset-0 h-full w-full object-cover opacity-40"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-ink/75"></div>
+    <div class="container-site relative py-20 md:py-28">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-brand">About us</p>
+      <h1 class="max-w-3xl font-display text-5xl tracking-wide text-white md:text-6xl">
+        A concrete crew that communicates and finishes the job
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-white/85">
+        Concrete Experts Company has 10+ years of experience serving homeowners and general
+        contractors across North Carolina with driveways, slabs, sidewalks, footing foundations,
+        and patios.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-b border-ink/10 bg-surface-muted">
+    <div class="container-site py-8 md:py-10">
+      <dl class="grid gap-6 sm:grid-cols-3">
+        {
+          site.stats.map((stat) => (
+            <div class="text-center sm:text-left">
+              <dt class="font-display text-4xl tracking-wide text-brand md:text-5xl">{stat.value}</dt>
+              <dd class="mt-1 text-sm font-semibold uppercase tracking-[0.08em] text-ink md:text-[15px]">
+                {stat.label}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="section-pad bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <SectionHeading
+          title="Built around clear communication and solid work"
+          description="Customers often mention Mike and the team for showing up on time, answering calls, and making sure the finished concrete meets expectations before they leave."
+        />
+        <p class="mt-6 leading-relaxed text-ink-muted">
+          Across 100+ projects, whether you need a stamped patio for weekends outside, a slab for
+          equipment, or footings for a new build, we focus on preparation, craftsmanship, and
+          staying easy to work with from quote through pour day. Our 4.9-star Google rating
+          reflects that approach.
+        </p>
+      </div>
+      <div class="border border-ink/10 bg-surface-muted p-8">
+        <h2 class="font-display text-3xl tracking-wide text-ink">Who we work with</h2>
+        <ul class="mt-6 space-y-5">
+          <li>
+            <h3 class="font-semibold text-ink">Homeowners</h3>
+            <p class="mt-1 text-ink-muted">
+              Driveways, sidewalks, and outdoor living spaces with finishes that match your property.
+            </p>
+          </li>
+          <li>
+            <h3 class="font-semibold text-ink">General contractors</h3>
+            <p class="mt-1 text-ink-muted">
+              Reliable flatwork and foundation concrete that fits build schedules and inspections.
+            </p>
+          </li>
+        </ul>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href={cta.primary.href} variant="primary">{cta.primary.label}</Button>
+          <Button href={site.phoneHref} variant="ghost">Call {site.phoneDisplay}</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad bg-surface-muted">
+    <div class="container-site">
+      <SectionHeading
+        title="What guides every project"
+        description="Simple standards that show up again and again in customer feedback."
+      />
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {
+          [
+            {
+              title: 'Communication',
+              text: 'Returned calls, clear quotes, and updates so you’re never left guessing.',
+            },
+            {
+              title: 'Craftsmanship',
+              text: 'Proper prep and finishes for driveways, slabs, foundations, and patios.',
+            },
+            {
+              title: 'Follow-through',
+              text: 'We aim to leave you satisfied with the result before the job is done.',
+            },
+          ].map((item) => (
+            <article class="border border-ink/10 bg-white p-6">
+              <h3 class="font-display text-3xl tracking-wide text-ink">{item.title}</h3>
+              <p class="mt-3 text-ink-muted leading-relaxed">{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Have a project in mind?"
+    description="Request a quote or call Concrete Experts Company to talk through your concrete work."
+  />
+</BaseLayout>

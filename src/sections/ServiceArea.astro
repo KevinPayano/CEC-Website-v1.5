@@ -1,0 +1,46 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import { site } from '../data/site';
+import { cta } from '../data/navigation';
+---
+
+<section id="service-area" class="section-pad bg-white">
+  <div class="container-site">
+    <div class="grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading
+          eyebrow="Service area"
+          title={`Concrete contractors serving ${site.serviceArea}`}
+          description="From residential patios and driveways to footing foundations for new builds, we take on concrete projects across North Carolina. Reach out with your location and project details to confirm availability."
+        />
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href={cta.primary.href} variant="primary">{cta.primary.label}</Button>
+          <Button href={site.phoneHref} variant="ghost">Call {site.phoneDisplay}</Button>
+        </div>
+      </div>
+      <div class="border border-ink/10 bg-surface-muted p-8 md:p-10">
+        <h3 class="font-display text-3xl tracking-wide text-ink">Project types we take on</h3>
+        <ul class="mt-6 space-y-3">
+          {
+            [
+              'Residential driveways and walkways',
+              'Garage, shed, and equipment slabs',
+              'Sidewalks and curb work',
+              'Footing foundations for homes and additions',
+              'Stamped and custom concrete patios',
+            ].map((item) => (
+              <li class="flex items-start gap-3 text-ink-muted">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 bg-brand" aria-hidden="true" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-6 text-sm text-ink-light">
+          City list coming soon — for now, tell us where the job is when you request a quote.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

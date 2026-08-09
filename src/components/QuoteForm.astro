@@ -1,0 +1,179 @@
+---
+import { site } from '../data/site';
+import Button from './Button.astro';
+
+interface Props {
+  id?: string;
+  defaultService?: string;
+}
+
+const { id = 'quote-form', defaultService = '' } = Astro.props;
+---
+
+<form
+  id={id}
+  name="quote"
+  method="POST"
+  action="/thank-you"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  class="space-y-5"
+  x-data="{
+    submitted: false,
+    errors: {},
+    validate() {
+      this.errors = {};
+      const form = $el;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
+      const message = form.message.value.trim();
+      if (!name) this.errors.name = 'Please enter your name.';
+      if (!email) this.errors.email = 'Please enter your email.';
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) this.errors.email = 'Enter a valid email address.';
+      if (!phone) this.errors.phone = 'Please enter your phone number.';
+      if (!message) this.errors.message = 'Tell us a bit about your project.';
+      return Object.keys(this.errors).length === 0;
+    },
+    handleSubmit(event) {
+      if (!this.validate()) {
+        event.preventDefault();
+        return;
+      }
+    }
+  }"
+  @submit="handleSubmit"
+>
+  <input type="hidden" name="form-name" value="quote" />
+  <p class="hidden">
+    <label>
+      Don’t fill this out if you’re human:
+      <input name="bot-field" tabindex="-1" autocomplete="off" />
+    </label>
+  </p>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for={`${id}-name`} class="mb-1.5 block text-sm font-semibold text-ink">
+        Full name
+      </label>
+      <input
+        type="text"
+        id={`${id}-name`}
+        name="name"
+        autocomplete="name"
+        required
+        class="w-full border border-ink/20 bg-white px-3.5 py-3 text-ink placeholder:text-ink-light focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+        placeholder="Jane Smith"
+        :aria-invalid="errors.name ? 'true' : 'false'"
+        aria-describedby={`${id}-name-error`}
+      />
+      <p
+        id={`${id}-name-error`}
+        class="mt-1.5 text-sm text-red-600"
+        x-cloak
+        x-show="errors.name"
+        x-text="errors.name"
+      ></p>
+    </div>
+
+    <div>
+      <label for={`${id}-phone`} class="mb-1.5 block text-sm font-semibold text-ink">
+        Phone
+      </label>
+      <input
+        type="tel"
+        id={`${id}-phone`}
+        name="phone"
+        autocomplete="tel"
+        required
+        class="w-full border border-ink/20 bg-white px-3.5 py-3 text-ink placeholder:text-ink-light focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+        placeholder="(919) 555-0123"
+        :aria-invalid="errors.phone ? 'true' : 'false'"
+        aria-describedby={`${id}-phone-error`}
+      />
+      <p
+        id={`${id}-phone-error`}
+        class="mt-1.5 text-sm text-red-600"
+        x-cloak
+        x-show="errors.phone"
+        x-text="errors.phone"
+      ></p>
+    </div>
+  </div>
+
+  <div>
+    <label for={`${id}-email`} class="mb-1.5 block text-sm font-semibold text-ink">
+      Email
+    </label>
+    <input
+      type="email"
+      id={`${id}-email`}
+      name="email"
+      autocomplete="email"
+      required
+      class="w-full border border-ink/20 bg-white px-3.5 py-3 text-ink placeholder:text-ink-light focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+      placeholder="you@email.com"
+      :aria-invalid="errors.email ? 'true' : 'false'"
+      aria-describedby={`${id}-email-error`}
+    />
+    <p
+      id={`${id}-email-error`}
+      class="mt-1.5 text-sm text-red-600"
+      x-cloak
+      x-show="errors.email"
+      x-text="errors.email"
+    ></p>
+  </div>
+
+  <div>
+    <label for={`${id}-service`} class="mb-1.5 block text-sm font-semibold text-ink">
+      Service needed
+    </label>
+    <select
+      id={`${id}-service`}
+      name="service"
+      class="w-full border border-ink/20 bg-white px-3.5 py-3 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+    >
+      <option value="" selected={!defaultService}>Select a service</option>
+      <option value="Driveways" selected={defaultService === 'Driveways'}>Driveways</option>
+      <option value="Slabs" selected={defaultService === 'Slabs'}>Slabs</option>
+      <option value="Sidewalks & Curbs" selected={defaultService === 'Sidewalks & Curbs'}>Sidewalks & Curbs</option>
+      <option value="Footing Foundations" selected={defaultService === 'Footing Foundations'}>Footing Foundations</option>
+      <option value="Patios" selected={defaultService === 'Patios'}>Patios</option>
+      <option value="Other / Not sure" selected={defaultService === 'Other / Not sure'}>Other / Not sure</option>
+    </select>
+  </div>
+
+  <div>
+    <label for={`${id}-message`} class="mb-1.5 block text-sm font-semibold text-ink">
+      Project details
+    </label>
+    <textarea
+      id={`${id}-message`}
+      name="message"
+      rows="5"
+      required
+      class="w-full resize-y border border-ink/20 bg-white px-3.5 py-3 text-ink placeholder:text-ink-light focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+      placeholder="Describe the project, approximate size, and location."
+      :aria-invalid="errors.message ? 'true' : 'false'"
+      aria-describedby={`${id}-message-error`}
+    ></textarea>
+    <p
+      id={`${id}-message-error`}
+      class="mt-1.5 text-sm text-red-600"
+      x-cloak
+      x-show="errors.message"
+      x-text="errors.message"
+    ></p>
+  </div>
+
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+    <Button type="submit" variant="primary" size="lg">
+      Request Free Quote
+    </Button>
+    <p class="text-sm text-ink-muted">
+      Or call <a href={site.phoneHref} class="font-semibold text-brand hover:text-brand-dark">{site.phoneDisplay}</a>
+    </p>
+  </div>
+</form>

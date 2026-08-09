@@ -1,0 +1,36 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`space-y-5 ${className}`}>
+  <div>
+    <h3 class="font-display text-2xl tracking-wide text-ink">Phone</h3>
+    <a href={site.phoneHref} class="mt-1 block text-lg font-semibold text-brand hover:text-brand-dark">
+      {site.phoneDisplay}
+    </a>
+  </div>
+  <div>
+    <h3 class="font-display text-2xl tracking-wide text-ink">Email</h3>
+    <a
+      href={`mailto:${site.email}`}
+      class="mt-1 block break-all text-ink-muted hover:text-brand"
+    >
+      {site.email}
+    </a>
+  </div>
+  <div>
+    <h3 class="font-display text-2xl tracking-wide text-ink">Hours</h3>
+    <p class="mt-1 text-ink-muted">{site.hours.weekdays}</p>
+    <p class="text-ink-muted">{site.hours.weekend}</p>
+  </div>
+  <div>
+    <h3 class="font-display text-2xl tracking-wide text-ink">Service Area</h3>
+    <p class="mt-1 text-ink-muted">{site.serviceArea}</p>
+  </div>
+</div>
