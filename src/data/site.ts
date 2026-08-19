@@ -23,7 +23,7 @@ export const site = {
   ],
   creatorCredit: {
     name: 'CodeNHammer',
-    url: 'https://codenhammer.vercel.app/',
+    url: 'https://codenhammer.com/',
   },
 } as const;
 
